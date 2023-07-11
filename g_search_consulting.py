@@ -3,7 +3,7 @@ import time
 from googleapiclient.discovery import build
 import csv
 
-api_key='AIzaSyDAFEg7SzB5EBjgQkgbTr3OEAJmaXiBM9A'
+api_key='API_KEY'
 resource = build("customsearch", 'v1', developerKey=api_key).cse()
 with open(r'consulting_companies_cleaned.csv', 'r') as file:
     reader = csv.reader(file)
@@ -15,7 +15,7 @@ with open(r'consulting_companies_cleaned.csv', 'r') as file:
         web_link=row[1]
         query = f'site:www.linkedin.com/in/ AND "{name}" AND partner'
         time.sleep(1)
-        result = resource.list(q=query, cx='738614f36fb84493d').execute()
+        result = resource.list(q=query, cx='cx_key').execute()
         try:
             for count, r in enumerate(result['items']):
                title=r['title']
